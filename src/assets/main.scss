@@ -1,0 +1,13 @@
+@import "./../../node_modules/bootstrap/scss/functions";
+@import "./stylesheet/variables";
+@import "./../../node_modules/bootstrap/scss/bootstrap.scss";
+
+
+@font-face {
+    font-family: "FONT123";
+    src: url("../../public/851CHIKARA-DZUYOKU_kanaA_004.ttf");
+}
+
+*{
+    font-family: "FONT123",sans-serif;
+}
