@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript实现购物车功能</title>
+    <style type="text/css">
+        .num {
+            width: 30px;
+        }
+    </style>
+    <!--入jquery-->
+    <script src="script/jquery-1.12.4.js"></script>
+    <script>
+        //1.实现全选的效果
+        function checkAll() {
+            let eles = document.getElementsByName("product");//获取的是对象集合
+            //console.log(eles);//调试代码
+            for (let i = 0; i < eles.length; i++) {
+                eles[i].checked = document.getElementById("checkall").checked;
+            }
+        }
+ 
+        //2.实现选择商品改变全选框的效果
+        function checkProduct() {
+            let ckall = document.getElementById("checkall");//全选框
+            let eles = document.getElementsByName("product");//获取商品选框对象集合
+            let size = eles.length;//商品数目
+            let total = 0;//选中的商品数目
+ 
+            //遍历集合，判断商品是否都被选中
+            for (let i = 0; i < size; i++) {
+                if (eles[i].checked == false) {
+                    ckall.checked = false;
+                    break;//中断循环
+                } else {
+                    total += 1;
+                }
+            }
+            //判断是否已经遍历完成
+            if (total == size) {
+                ckall.checked = true;
+            }
+        }
+ 
+        //jquery开发环境
+        $(function () {
+            //alert("hello jquey!");
+            //3.实现增加商品数量
+            $("#mycart").find(".add").click(function () {
+                let $_pre = $(this).prev();
+                //console.log($_pre);
+                let num = parseInt($_pre.val());
+                //alert(num);
+                $_pre.val(num + 1);//数量+1
+ 
+                //改变小计金额
+                let price=$_pre.parent().prev().text();//读取价格
+                $_pre.parent().next().text(parseInt(price)*(num+1));
+                totalPrice();
+ 
+            })
+ 
+            //4.减少商品数量
+            $("#mycart").find(".sub").click(function () {
+                let $_next = $(this).next();
+                let num = parseInt($_next.val());
+                if (num < 2) {
+                    let result = confirm("确定删除该商品?");
+                    if (result == true) {
+                        $_next.parent().parent().remove();//删除商品
+                        totalPrice();
+                    }
+                } else {
+                    $_next.val(num - 1);//数量-1
+                    //改变小计金额
+                    let price=$_next.parent().prev().text();//读取价格
+                    $_next.parent().next().text(parseInt(price)*(num-1));
+                    totalPrice();
+                }
+            })
+ 
+            //5.增加商品效果
+            $("#addProduct").click(function () {
+                let $_newRow =$("#mycart").find("tr").eq(1).clone(true);
+                $("#mycart").find("tr").eq(1).after($_newRow);
+                totalPrice();
+            })
+ 
+            //6.总计价格
+            function totalPrice() {
+                var sum=0;
+                $(".total").each(function (i,e) {
+                    sum+=parseInt($(e).text());
+                })
+                $("#sum").text(sum);
+ 
+            }
+ 
+            //执行计算总价
+            totalPrice();
+        })
+    </script>
+</head>
+<body>
+<button id="addProduct">增加商品</button>
+<hr>
+<table id="mycart" border="1px">
+    <tr>
+        <th>全选<input type="checkbox" id="checkall" onclick="checkAll()"></th>
+        <th>品名</th>
+        <th>价格</th>
+        <th>数量</th>
+        <th>小计</th>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="product" onclick="checkProduct()"></td>
+        <td>衣服</td>
+        <td>800</td>
+        <td>
+            <button class="sub">-</button>
+            <input type="text" name="num" class="num" value="1">
+            <button class="add">+</button>
+        </td>
+        <td class="total">800</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="product" onclick="checkProduct()"></td>
+        <td>鞋子</td>
+        <td>500</td>
+        <td>
+            <button class="sub">-</button>
+            <input type="text" name="num" class="num" value="1">
+            <button class="add">+</button>
+        </td>
+        <td  class="total">500</td>
+    </tr>
+    <tr>
+        <td colspan="3">总计</td>
+        <td colspan="2" id="sum">888</td>
+    </tr>
+</table>
+ 
+</body>
+</html>

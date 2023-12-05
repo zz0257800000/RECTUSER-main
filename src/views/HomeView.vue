@@ -8,25 +8,11 @@ export default {
       imageUrl: null,
       isZoomed: false,
       currentDate: new Date().toLocaleString(),
-      // musicSource: '../../public/mp3/fripSide - double Decades(Audio).mp3', // 歌曲文件的路径，请根据实际情况修改路径
       isLoading: true, // 默认情况下显示加载状态
-      currentSongIndex: 0,
-      showDialog: false,
-      showDialog: false,
+       showDialog: false,
+  
 
-      songs: [
-        {
-          title: "fripSide - double Decades(Audio)",
-          image: "../../public/mp3/mp3圖/01.jpg",
-          audioSource: "../../public/mp3/song1.mp3"
-        },
-        {
-          title: "藍井エイル「シューゲイザー」Music Video",
-          image: "../../public/mp3/mp3圖/02.jpg",
-          audioSource: "../../public/mp3/song1.mp3"
-        },
-        // 添加更多歌曲
-      ],
+  
 
     }
   },
@@ -41,10 +27,7 @@ export default {
     this.updateDate();
   },
   computed: {
-    currentSong() {
-      return this.songs[this.currentSongIndex];
-
-    },
+   
   },
   methods: {
     updateDate() {
@@ -61,16 +44,7 @@ export default {
     //   this.$refs.audioPlayer.play();
     // }, 自動放歌
 
-    playPreviousSong() {
-      this.currentSongIndex = (this.currentSongIndex - 1 + this.songs.length) % this.songs.length;
-      this.$refs.audioPlayer.load();
-      this.$refs.audioPlayer.play();
-    },
-    playNextSong() {
-      this.currentSongIndex = (this.currentSongIndex + 1) % this.songs.length;
-      this.$refs.audioPlayer.load();
-      this.$refs.audioPlayer.play();
-    },
+  
     ShowDialog() {
       this.showDialog = !this.showDialog;
     },
@@ -175,7 +149,7 @@ export default {
       </div>
       <div class="midDownTeam">
         <div class="midDown1">
-          <iframe width="427px" height="203px" src="https://www.youtube.com/embed/Ci_zad39Uhw?si=4FZgs2QmMA-7mTPG"
+          <iframe width="427px" height="100%" src="https://www.youtube.com/embed/Ci_zad39Uhw?si=4FZgs2QmMA-7mTPG"
             title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
@@ -191,18 +165,11 @@ export default {
     </div>
     <div class="userRight">
       <div class="userRightTop">
-        <div>
-          <img :src="currentSong.image" alt="Album Cover" />
-          <div>
-            <h2>{{ currentSong.title }}</h2>
-            <p>{{ currentSong.artist }}</p>
-          </div>
-          <audio loop="loop" start:0.5 ref="audioPlayer" :src="musicSource" controls autoplay></audio>
-          <button @click="playPreviousSong">上一首</button>
-          <button @click="playNextSong">下一首</button>
-        </div>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2jFssE82GLIUkw0xuYK2C2?utm_source=generator" width="100%" height="100%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
       </div>
-      <div class="userRightDown">
+
+        
+        <div class="userRightDown">
 <img src="./../../public/首頁/11.png" alt="">   
    </div>
     </div>
@@ -319,6 +286,7 @@ a {
         position: relative;
         right: 50%;
         bottom: 25%;
+        
       }
 
       .lolidance {
@@ -669,7 +637,7 @@ a {
       img {
         margin: 0;
         width: 20vw;
-        height: 363px;
+        height: 100%;
         border: 2px solid rgb(6, 6, 6);
 
       }
@@ -723,7 +691,6 @@ a {
   }
 
   .userRight {
-    z-index: -2;
     margin-left: 10px;
     height: 97vh;
     width: 18vw;
@@ -733,11 +700,11 @@ a {
     .userRightTop {
       background-color: rgb(255, 255, 255);
       /* 透明背景 */
-
+      width: 18vw;
       border: 2px solid black;
       height: 55vh;
       box-shadow: 0px 5px 10px 0px #777;
-      overflow: hidden;
+     
 
     }
 
