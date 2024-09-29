@@ -73,7 +73,6 @@ mounted() {
     <div>
     <!-- 音乐播放器 -->
     <audio ref="musicPlayer" autoplay loop controls>
-      <source src="../../public/mp3/fripSide - endless entropy (Audio).mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
   </div>

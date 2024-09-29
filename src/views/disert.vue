@@ -21,7 +21,7 @@ export default {
         <div class="cakeTop">
 
         </div>
-        <img src="../../public/上課用圖片/Group 10.png" class="cakeTopRight" height=100px width=100px alt="">
+        <img src="../../public/上課用圖片/Group10.png" class="cakeTopRight" height=100px width=100px alt="">
     </div>
     <div class="cakeTwo page">
         <div class="cakeTwoLeft">
