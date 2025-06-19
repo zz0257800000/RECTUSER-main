@@ -1,0 +1,1 @@
+import o from"./NetHomePage-716f9149.js";import{_ as t,r as n,o as r,j as a}from"./index-d183d268.js";const s={data(){return{}},components:{NetHomePage:o}};function c(m,p,_,f,i,d){const e=n("NetHomePage");return r(),a(e)}const H=t(s,[["render",c]]);export{H as default};

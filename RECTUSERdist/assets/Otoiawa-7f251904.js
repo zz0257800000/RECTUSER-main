@@ -1,0 +1,1 @@
+import o from"./houseHeader-1c36c201.js";import{_ as t,r as a,o as s,c as n,a as r,F as c,d as _}from"./index-d183d268.js";const d={data(){return{}},components:{houseHeader:o}},p=_("div",{class:"houseContent1"},null,-1);function u(l,i,m,f,h,v){const e=a("houseHeader");return s(),n(c,null,[r(e),p],64)}const B=t(d,[["render",u]]);export{B as default};
